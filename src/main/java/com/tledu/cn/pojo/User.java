@@ -1,23 +1,27 @@
 package com.tledu.cn.pojo;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
-
 /**
  * @author sxwstart
  * @create 2021-01-20-10:34:46
  */
 public class User {
 
+    private String userId;
     private String userName;
     private String userAcc;
     private String userPwd;
+    private String createtime;
+    private String isDelete;
 
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
                 ", userAcc='" + userAcc + '\'' +
                 ", userPwd='" + userPwd + '\'' +
+                ", createtime='" + createtime + '\'' +
+                ", isDelete='" + isDelete + '\'' +
                 '}';
     }
 
@@ -45,10 +49,37 @@ public class User {
         this.userPwd = userPwd;
     }
 
-    public User(String userName, String userAcc, String userPwd) {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public User(String userId, String userName, String userAcc, String userPwd, String createtime, String isDelete) {
+        this.userId = userId;
         this.userName = userName;
         this.userAcc = userAcc;
         this.userPwd = userPwd;
+        this.createtime = createtime;
+        this.isDelete = isDelete;
     }
 
     public User() {

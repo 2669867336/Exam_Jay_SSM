@@ -7,5 +7,6 @@ import com.tledu.cn.pojo.User;
  * @create 2021-01-20-10:55:54
  */
 public interface UserService {
-    public void register(User user);
+    public int register(User user);
+    public int login(User user);
 }

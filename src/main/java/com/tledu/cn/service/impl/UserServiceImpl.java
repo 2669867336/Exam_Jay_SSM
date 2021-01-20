@@ -5,6 +5,9 @@ import com.tledu.cn.pojo.User;
 import com.tledu.cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import util.JDK8DateUtil;
+
+import java.util.UUID;
 
 /**
  * @author sxwstart
@@ -17,8 +20,45 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public void register(User user) {
-        System.out.println(user);
-        userDao.register(user);
+    public int register(User user) {
+        int mark;
+        String id=null;
+        if (user.getUserAcc()!=null&&user.getUserAcc()!=""&&user.getUserPwd()!=null&&user.getUserPwd()!=""){
+             id = userDao.isExist(user);
+
+//            System.out.println(id);
+            if (id==null||id.equals("")){
+                user.setUserId(UUID.randomUUID().toString());
+                user.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
+                user.setIsDelete("0");
+//                System.out.println(user);
+                userDao.register(user);
+                mark=1;
+            }else {
+                mark=2;
+            }
+        }else {
+            mark=2;
+        }
+        return mark;
     }
+    @Override
+    public int login(User user){
+        int mark;
+        if (user.getUserAcc()!=""&&user.getUserPwd()!=""){
+            String pwd = userDao.login(user);
+            if (user.getUserPwd().equals(pwd)){
+                mark=1;
+            }else{
+                mark=2;
+            }
+
+        }else{
+            mark=2;
+        }
+        return mark;
+    }
+
+
+
 }

@@ -5,9 +5,15 @@
 <mapper namespace="com.tledu.cn.dao.UserDao">
 
     <insert id="register" parameterType="com.tledu.cn.pojo.User">
-        insert into user (user_name,user_acc,user_pwd) values (#{userName},#{userAcc},#{userPwd})
+        insert into user (user_id,user_name,user_acc,user_pwd,createtime,is_delete) values (#{userId},#{userName},#{userAcc},#{userPwd},#{createtime},#{isDelete})
     </insert>
 
+    <select id="isExist" parameterType="com.tledu.cn.pojo.User" resultType="java.lang.String">
+        select user_id from user where user_acc=#{userAcc}
+    </select>
 
+    <select id="login" parameterType="com.tledu.cn.pojo.User" resultType="java.lang.String">
+        select user_pwd from user where user_acc=#{userAcc}
+    </select>
 </mapper>
     

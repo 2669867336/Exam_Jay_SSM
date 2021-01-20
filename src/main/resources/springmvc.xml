@@ -12,17 +12,16 @@
 
     <!--开启注解-->
     <mvc:annotation-driven/>
+    <!--开放组件，扫描@Controller-->
+    <context:component-scan base-package="com.tledu.cn"></context:component-scan>
 
     <mvc:default-servlet-handler/>
 
-    <!--开放组件，扫描@Controller-->
-    <context:component-scan base-package="com.tledu.cn"></context:component-scan>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/html/"></property>
         <property name="suffix" value=".html"></property>
-
     </bean>
 
 </beans>

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.tledu.cn.pojo.Examination;
 import com.tledu.cn.service.ExaminationService;
 import com.tledu.cn.service.UserService;
+import com.tledu.cn.service.impl.ExaminationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +26,10 @@ public class ExaminationController {
     @ResponseBody
     public int insert(@RequestBody Examination examination){
         int mark=1;
-        System.out.println(examination);
+
 
          mark = examinationImpl.insertExamination(examination);
+
         return mark;
     }
 
@@ -61,10 +63,11 @@ public class ExaminationController {
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
         List<Examination> exs = examinationImpl.selectExamination();
         PageInfo<Examination> pageInfo = new PageInfo<Examination>(exs);
-//        System.out.println(pageInfo.getList());
+
 //{total:xxx,rows:[{ename:xxx,mgr:xxx,job:xxx},{xxxxxxx}]}
         return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }
+
 
 
 }

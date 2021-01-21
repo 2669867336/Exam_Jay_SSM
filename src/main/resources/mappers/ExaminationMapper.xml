@@ -5,7 +5,10 @@
 <mapper namespace="com.tledu.cn.dao.ExaminationDao">
 <!--    题库的增加-->
     <insert id="insertExamination" parameterType="com.tledu.cn.pojo.Examination">
-        insert into examination  values (#{examinationID},#{examinationTitle},#{examinationA},
+        insert into examination (examination_id,examination_title,examination_a,
+        examination_b,examination_c,examination_d,
+        examination_type,examination_answer,examination_degree,
+        examination_score,is_delete,createtime) values (#{examinationId},#{examinationTitle},#{examinationA},
         #{examinationB},#{examinationC},#{examinationD},
         #{examinationType},#{examinationAnswer},#{examinationDegree},
         #{examinationScore},#{isDelete},#{createtime})

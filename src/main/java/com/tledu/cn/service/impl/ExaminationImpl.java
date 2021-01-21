@@ -20,25 +20,22 @@ public class ExaminationImpl implements ExaminationService {
     public int insertExamination(Examination examination) {
         int mark=0;
 
-//        if (examination.getExaminationTitle()!=null&&examination.getExaminationTitle()!=""
-//                &&examination.getExaminationA()!=null&&examination.getExaminationA()!=""
-//        &&examination.getExaminationB()!=null&&examination.getExaminationB()!=""
-//        &&examination.getExaminationC()!=null&&examination.getExaminationC()!=""
-//        &&examination.getExaminationD()!=null&&examination.getExaminationD()!=""
-//        &&examination.getExaminationAnswer()!=null&&examination.getExaminationAnswer()!=""
-//        &&examination.getExaminationDegree()!=null&&examination.getExaminationDegree()!=""
-//        &&examination.getExaminationScore()!=null&&examination.getExaminationScore()!=""
-//        &&examination.getExaminationType()!=null&&examination.getExaminationType()!=""){
+        if (examination.getExaminationTitle()!=null&&examination.getExaminationTitle()!=""
+        &&examination.getExaminationAnswer()!=null&&examination.getExaminationAnswer()!=""
+        &&examination.getExaminationDegree()!=null&&examination.getExaminationDegree()!=""
+        &&examination.getExaminationScore()!=null&&examination.getExaminationScore()!=""
+        &&examination.getExaminationType()!=null&&examination.getExaminationType()!=""){
 
             examination.setExaminationId(UUID.randomUUID().toString());
             examination.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
             examination.setIsDelete("0");
-            mark = examinationDao.insertExamination(examination);
 
-//        }
-//        else{
+             examinationDao.insertExamination(examination);
+            mark=1;
+        }
+        else{
             mark=2;//没插进去 或者其他情况
-//        }
+        }
         return mark;
     }
 
@@ -58,7 +55,7 @@ public class ExaminationImpl implements ExaminationService {
 
     @Override
     public List<Examination> selectExamination() {
-
-        return null;
+        List<Examination> examinations = examinationDao.selectExamination();
+        return examinations;
     }
 }

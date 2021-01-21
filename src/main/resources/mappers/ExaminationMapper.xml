@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.ExaminationDao">
+<!--    题库的增加-->
+    <insert id="insertExamination" parameterType="com.tledu.cn.pojo.Examination">
+        insert into examination  values (#{examinationID},#{examinationTitle},#{examinationA},
+        #{examinationB},#{examinationC},#{examinationD},
+        #{examinationType},#{examinationAnswer},#{examinationDegree},
+        #{examinationScore},#{isDelete},#{createtime})
+    </insert>
+<!--    题库的查找-->
+    <select id="selectExamination" parameterType="com.tledu.cn.pojo.Examination" resultType="com.tledu.cn.pojo.Examination">
+        select * from examination
+    </select>
+
+<!--    题库的更改-->
+
+    <update id="updateExamination" parameterType="com.tledu.cn.pojo.Examination">
+        update examination set examination_id=#{examinationID},examination_title=#{examinationTitle},
+        examination_a=#{examinationA},examination_b=#{examinationB}
+        ,examination_c=#{examinationC},examination_d=#{examinationD},
+        examination_type=#{examinationType},examination_answer=#{examinationAnswer},
+        examination_degree=#{examinationDegree},examination_score=#{examinationScore},
+        is_delete=#{isDelete},createtime=#{createtime}
+    </update>
+
+<!--    题库的删除-->
+    <delete id="deleteExamination" parameterType="com.tledu.cn.pojo.Examination">
+        delete from table where examination_title=#{examinationTitle}
+    </delete>
+</mapper>

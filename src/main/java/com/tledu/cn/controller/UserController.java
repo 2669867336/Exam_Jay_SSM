@@ -16,9 +16,7 @@ import java.util.UUID;
  * @create 2021-01-20-10:57:06
  */
 @Controller
-public class MyController {
-
-
+public class UserController {
 
     @Autowired
     private UserService userServiceImpl;

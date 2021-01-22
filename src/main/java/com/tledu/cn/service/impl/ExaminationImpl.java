@@ -26,12 +26,16 @@ public class ExaminationImpl implements ExaminationService {
         &&examination.getExaminationScore()!=null&&examination.getExaminationScore()!=""
         &&examination.getExaminationType()!=null&&examination.getExaminationType()!=""){
 
-            examination.setExaminationId(UUID.randomUUID().toString());
-            examination.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
-            examination.setIsDelete("0");
+            String strings = examinationDao.selectTitle(examination);
+            if(strings==""||strings==null){
+                examination.setExaminationId(UUID.randomUUID().toString());
+                examination.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
+                examination.setIsDelete("0");
 
-             examinationDao.insertExamination(examination);
-            mark=1;
+                examinationDao.insertExamination(examination);
+                mark=1;
+            }
+
         }
         else{
             mark=2;//没插进去 或者其他情况
@@ -45,13 +49,7 @@ public class ExaminationImpl implements ExaminationService {
     public int updateExamination(Examination examination) {
         int mark=0;//0代表什么操作也没发生
 
-        String strings = examinationDao.selectTitle(examination);
-        if (strings==null){
             mark = examinationDao.updateExamination(examination);
-
-        }else{
-            mark=2;
-        }
 
         return mark;
     }

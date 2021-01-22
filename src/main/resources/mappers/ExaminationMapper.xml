@@ -21,13 +21,11 @@
 <!--    题库的更改-->
 
     <update id="updateExamination" parameterType="com.tledu.cn.pojo.Examination">
-        update examination set examination_id=#{examinationID},examination_title=#{examinationTitle},
+        update examination set examination_title=#{examinationTitle},
         examination_a=#{examinationA},examination_b=#{examinationB}
         ,examination_c=#{examinationC},examination_d=#{examinationD},
-        examination_type=#{examinationType},examination_answer=#{examinationAnswer},
-        examination_degree=#{examinationDegree},examination_score=#{examinationScore},
-        is_delete=#{isDelete},createtime=#{createtime} where examination_title=#{examinationTitle}
-        and is_delete="0"
+        examination_answer=#{examinationAnswer},examination_degree=#{examinationDegree},examination_score=#{examinationScore}
+ where examination_title=#{examinationTitle}
     </update>
 
 <!--    题库的删除-->

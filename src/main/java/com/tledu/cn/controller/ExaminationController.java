@@ -37,8 +37,9 @@ public class ExaminationController {
     @ResponseBody
     public int update(@RequestBody Examination examination){
         int mark=0;
-        System.out.println(examination);
+        System.out.println("更新的"+examination);
         mark = examinationImpl.updateExamination(examination);
+        System.out.println("更新的"+mark);
         return mark;
     }
 
@@ -47,8 +48,9 @@ public class ExaminationController {
     @ResponseBody
     public int delete(@RequestBody Examination examination){
         int mark=0;
-        System.out.println(examination);
+
         mark = examinationImpl.deleteExamination(examination);
+
         return mark;
     }
 
@@ -63,7 +65,6 @@ public class ExaminationController {
         List<Examination> exs = examinationImpl.selectExamination();
         PageInfo<Examination> pageInfo = new PageInfo<Examination>(exs);
 
-//{total:xxx,rows:[{ename:xxx,mgr:xxx,job:xxx},{xxxxxxx}]}
         return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }
 

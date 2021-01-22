@@ -48,15 +48,11 @@ public class ExaminationImpl implements ExaminationService {
     @Override
     public int updateExamination(Examination examination) {
         int mark=0;//0代表什么操作也没发生
-
+//        System.out.println(examination);
         if (examination.getExaminationTitle()!=null&&examination.getExaminationTitle()!=""
                 &&examination.getExaminationAnswer()!=null&&examination.getExaminationAnswer()!=""
                 &&examination.getExaminationDegree()!=null&&examination.getExaminationDegree()!=""
                 &&examination.getExaminationScore()!=null&&examination.getExaminationScore()!=""
-                &&examination.getExaminationA()!=null&&examination.getExaminationA()!=""
-                &&examination.getExaminationB()!=null&&examination.getExaminationB()!=""
-                &&examination.getExaminationC()!=null&&examination.getExaminationC()!=""
-                &&examination.getExaminationD()!=null&&examination.getExaminationD()!=""
                 ){
             mark = examinationDao.updateExamination(examination);
 
@@ -108,6 +104,7 @@ public class ExaminationImpl implements ExaminationService {
 
     @Override
     public List<Examination> selectKeyword(String e_title) {
+//        System.out.println("======"+e_title);
         List<Examination> examinations = examinationDao.selectKeyword(e_title);
         return examinations;
     }

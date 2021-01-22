@@ -53,6 +53,6 @@
     
 <!--    关键字查询-->
     <select id="selectKeyword" parameterType="string" resultType="com.tledu.cn.pojo.Examination">
-        select * from examination where examination_title like "%#{value}%" and is_delete="0"
+        select * from examination where examination_title like concat('%',#{value},'%') and is_delete ="0"
     </select>
 </mapper>

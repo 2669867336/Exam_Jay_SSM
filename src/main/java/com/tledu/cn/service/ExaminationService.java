@@ -11,4 +11,7 @@ public interface ExaminationService {
     public List<Examination> selectExamination();
     public List<Examination> selTitleExamination(Examination examination);
     public String selectTitle(Examination examination);
+    public List<Examination> selectTypeXuan();
+    public List<Examination> selectTypeJian();
+    public List<Examination> selectKeyword(String e_title);
 }

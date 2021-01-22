@@ -25,7 +25,7 @@
         examination_a=#{examinationA},examination_b=#{examinationB}
         ,examination_c=#{examinationC},examination_d=#{examinationD},
         examination_answer=#{examinationAnswer},examination_degree=#{examinationDegree},examination_score=#{examinationScore}
- where examination_title=#{examinationTitle}
+ where examination_id=#{examinationId}
     </update>
 
 <!--    题库的删除-->
@@ -41,5 +41,18 @@
 <!--    查找题目判断插入重复问题-->
     <select id="selectTitle" parameterType="com.tledu.cn.pojo.Examination" resultType="string">
         select examination_id from examination where examination_title=#{examinationTitle} and is_delete="0"
-            </select>
+    </select>
+
+    <select id="selectTypeXuan"  resultType="com.tledu.cn.pojo.Examination">
+        select * from examination where examination_type="选择题" and is_delete="0"
+    </select>
+
+    <select id="selectTypeJian" parameterType="com.tledu.cn.pojo.Examination" resultType="com.tledu.cn.pojo.Examination">
+        select * from examination where examination_type="简答题" and is_delete="0"
+    </select>
+    
+<!--    关键字查询-->
+    <select id="selectKeyword" parameterType="string" resultType="com.tledu.cn.pojo.Examination">
+        select * from examination where examination_title like "%#{value}%" and is_delete="0"
+    </select>
 </mapper>

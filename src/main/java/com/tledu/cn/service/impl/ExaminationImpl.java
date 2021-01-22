@@ -49,7 +49,19 @@ public class ExaminationImpl implements ExaminationService {
     public int updateExamination(Examination examination) {
         int mark=0;//0代表什么操作也没发生
 
+        if (examination.getExaminationTitle()!=null&&examination.getExaminationTitle()!=""
+                &&examination.getExaminationAnswer()!=null&&examination.getExaminationAnswer()!=""
+                &&examination.getExaminationDegree()!=null&&examination.getExaminationDegree()!=""
+                &&examination.getExaminationScore()!=null&&examination.getExaminationScore()!=""
+                &&examination.getExaminationA()!=null&&examination.getExaminationA()!=""
+                &&examination.getExaminationB()!=null&&examination.getExaminationB()!=""
+                &&examination.getExaminationC()!=null&&examination.getExaminationC()!=""
+                &&examination.getExaminationD()!=null&&examination.getExaminationD()!=""
+                ){
             mark = examinationDao.updateExamination(examination);
+
+        }
+
 
         return mark;
     }
@@ -80,5 +92,23 @@ public class ExaminationImpl implements ExaminationService {
     public String selectTitle(Examination examination) {
         String stringList = examinationDao.selectTitle(examination);
         return stringList;
+    }
+
+    @Override
+    public List<Examination> selectTypeXuan() {
+        List<Examination> xuan = examinationDao.selectTypeXuan();
+        return xuan;
+    }
+
+    @Override
+    public List<Examination> selectTypeJian() {
+        List<Examination> jian = examinationDao.selectTypeJian();
+        return jian;
+    }
+
+    @Override
+    public List<Examination> selectKeyword(String e_title) {
+        List<Examination> examinations = examinationDao.selectKeyword(e_title);
+        return examinations;
     }
 }

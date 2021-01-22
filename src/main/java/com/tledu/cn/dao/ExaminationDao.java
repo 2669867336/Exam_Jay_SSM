@@ -11,4 +11,7 @@ public interface ExaminationDao {
     public int deleteExamination(Examination examination);
     public List<Examination> selTitleExamination(Examination examination);
     public String selectTitle(Examination examination);
+    public List<Examination> selectTypeXuan();
+    public List<Examination> selectTypeJian();
+    public List<Examination> selectKeyword(String e_title);
 }

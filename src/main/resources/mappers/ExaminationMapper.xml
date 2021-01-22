@@ -15,7 +15,7 @@
     </insert>
 <!--    题库的查找-->
     <select id="selectExamination" parameterType="com.tledu.cn.pojo.Examination" resultType="com.tledu.cn.pojo.Examination">
-        select * from examination
+        select * from examination where is_delete="0";
     </select>
 
 <!--    题库的更改-->
@@ -26,11 +26,22 @@
         ,examination_c=#{examinationC},examination_d=#{examinationD},
         examination_type=#{examinationType},examination_answer=#{examinationAnswer},
         examination_degree=#{examinationDegree},examination_score=#{examinationScore},
-        is_delete=#{isDelete},createtime=#{createtime}
+        is_delete=#{isDelete},createtime=#{createtime} where examination_title=#{examinationTitle}
+        and is_delete="0"
     </update>
 
 <!--    题库的删除-->
-    <delete id="deleteExamination" parameterType="com.tledu.cn.pojo.Examination">
-        delete from table where examination_title=#{examinationTitle}
-    </delete>
+    <update id="deleteExamination" parameterType="com.tledu.cn.pojo.Examination">
+        update examination set is_delete="1" where examination_title=#{examinationTitle}
+    </update>
+
+<!--    详情页题库的回显-->
+    <select id="selTitleExamination" parameterType="com.tledu.cn.pojo.Examination" resultType="com.tledu.cn.pojo.Examination">
+        select * from examination where examination_title=#{examinationTitle} and is_delete="0"
+    </select>
+
+<!--    查找题目判断插入重复问题-->
+    <select id="selectTitle" parameterType="com.tledu.cn.pojo.Examination" resultType="string">
+        select examination_id from examination where examination_title=#{examinationTitle} and is_delete="0"
+            </select>
 </mapper>

@@ -9,4 +9,6 @@ public interface ExaminationService {
     public int updateExamination(Examination examination);
     public int deleteExamination(Examination examination);
     public List<Examination> selectExamination();
+    public List<Examination> selTitleExamination(Examination examination);
+    public String selectTitle(Examination examination);
 }

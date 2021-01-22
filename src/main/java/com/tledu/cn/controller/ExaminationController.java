@@ -27,7 +27,6 @@ public class ExaminationController {
     public int insert(@RequestBody Examination examination){
         int mark=1;
 
-
          mark = examinationImpl.insertExamination(examination);
 
         return mark;
@@ -66,6 +65,17 @@ public class ExaminationController {
 
 //{total:xxx,rows:[{ename:xxx,mgr:xxx,job:xxx},{xxxxxxx}]}
         return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
+
+
+    //题库详情页
+    @RequestMapping("/selectTitleEx")
+    @ResponseBody
+    public List<Examination> selTitle(@RequestBody Examination examination){
+
+        List<Examination> exs = examinationImpl.selTitleExamination(examination);
+
+        return exs;
     }
 
 

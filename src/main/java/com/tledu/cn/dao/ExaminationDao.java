@@ -9,4 +9,6 @@ public interface ExaminationDao {
     public List<Examination> selectExamination();
     public int updateExamination(Examination examination);
     public int deleteExamination(Examination examination);
+    public List<Examination> selTitleExamination(Examination examination);
+    public String selectTitle(Examination examination);
 }

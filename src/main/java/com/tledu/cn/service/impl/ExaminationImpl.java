@@ -39,10 +39,20 @@ public class ExaminationImpl implements ExaminationService {
         return mark;
     }
 
+
+    //更新修改题库根据title值
     @Override
     public int updateExamination(Examination examination) {
         int mark=0;//0代表什么操作也没发生
-        mark = examinationDao.updateExamination(examination);
+
+        String strings = examinationDao.selectTitle(examination);
+        if (strings==null){
+            mark = examinationDao.updateExamination(examination);
+
+        }else{
+            mark=2;
+        }
+
         return mark;
     }
 
@@ -57,5 +67,20 @@ public class ExaminationImpl implements ExaminationService {
     public List<Examination> selectExamination() {
         List<Examination> examinations = examinationDao.selectExamination();
         return examinations;
+    }
+
+
+    @Override
+    public List<Examination> selTitleExamination(Examination examination) {
+
+        List<Examination> examinationList = examinationDao.selTitleExamination(examination);
+        return examinationList;
+    }
+
+
+    @Override
+    public String selectTitle(Examination examination) {
+        String stringList = examinationDao.selectTitle(examination);
+        return stringList;
     }
 }

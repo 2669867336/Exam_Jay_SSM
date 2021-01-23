@@ -15,7 +15,7 @@
     </insert>
 <!--    题库的查找-->
     <select id="selectExamination" parameterType="com.tledu.cn.pojo.Examination" resultType="com.tledu.cn.pojo.Examination">
-        select * from examination where is_delete="0";
+        select * from examination where is_delete="0"
     </select>
 
 <!--    题库的更改-->

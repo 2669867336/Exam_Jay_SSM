@@ -6,7 +6,7 @@
 
     <insert id="paperInsert" parameterType="com.tledu.cn.pojo.Paper">
         insert into paper (paper_id,paper_type,paper_classify,paper_name,question_method,
-        paper_status,createtime,is_delete,url,paper_time,strat_time) values (#{paperId},#{paperType},#{paperClassify}
+        paper_status,createtime,is_delete,url,paper_time,start_time) values (#{paperId},#{paperType},#{paperClassify}
         ,#{paperName},#{questionMethod},#{paperStatus},#{createtime},#{isDelete},#{url},#{paperTime},#{startTime})
     </insert>
 
@@ -15,7 +15,7 @@
     </update>
 
     <select id="paperSelectAll" resultType="com.tledu.cn.pojo.Paper">
-        select * from paper
+        select * from paper where is_delete='0'
     </select>
 
     <update id="paperUpdate" parameterType="com.tledu.cn.pojo.Paper">

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.PaperDao">
+
+    <insert id="paperInsert" parameterType="com.tledu.cn.pojo.Paper">
+        insert into paper (paper_id,paper_type,paper_classify,paper_name,question_method,
+        paper_status,createtime,is_delete,url,paper_time,strat_time) values (#{paperId},#{paperType},#{paperClassify}
+        ,#{paperName},#{questionMethod},#{paperStatus},#{createtime},#{isDelete},#{url},#{paperTime},#{startTime})
+    </insert>
+
+    <update id="paperDelete" parameterType="com.tledu.cn.pojo.Paper">
+        update paper set is_delete="1" where paper_name=#{paperName}
+    </update>
+
+    <select id="paperSelectAll" resultType="com.tledu.cn.pojo.Paper">
+        select * from paper
+    </select>
+
+    <update id="paperUpdate" parameterType="com.tledu.cn.pojo.Paper">
+        update paper set paper_type=#{paperType},paper_classify=#{paperClassify},paper_name=#{paperName},
+        question_method=#{questionMethod},paper_time=#{paperTime},start_time=#{startTime} where paper_id=#{paperId}
+    </update>
+
+    <update id="paperUpdateStatus" parameterType="com.tledu.cn.pojo.Paper">
+        update paper set paper_status=#{paperStatus} where paper_name=#{paperName}
+    </update>
+
+</mapper>
+    

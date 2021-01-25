@@ -23,9 +23,19 @@ public class PapercController {
     @RequestMapping("/papercAdd")
     @ResponseBody
     public int papercAdd(@RequestBody Paperc paperc){
-        System.out.println(paperc);
+//        System.out.println(paperc);
         int mark;
-        mark=papercServiceImpl.papercAdd(paperc);
+        String id = papercServiceImpl.selectTilte(paperc.getPapercTitle());
+        if (id!=""&&id!=null){
+            int i = papercServiceImpl.papercAdd1(id);
+            if (i>0){
+                mark=1;
+            }else{
+                mark=0;
+            }
+        }else{
+            mark=papercServiceImpl.papercAdd(paperc);
+        }
         return mark;
 
     }

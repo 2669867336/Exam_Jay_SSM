@@ -15,8 +15,16 @@
         select * from paperc where is_delete = "0" and paper_id = #{paperId}
     </select>
 
-    <update id="papercDelete" parameterType="com.tledu.cn.pojo.Paperc">
-        update paperc set is_delete where paperc_title = #{papercTitle}
+    <update id="papercDelete" parameterType="string">
+        update paperc set is_delete = "1" where paperc_id = #{value}
+    </update>
+
+    <select id="selectTilte" parameterType="string" resultType="string">
+        select paperc_id from paperc where paperc_title=#{value}
+    </select>
+
+    <update id="papercAdd1" parameterType="string">
+        update paperc set is_delete = "0" where paperc_id=#{value}
     </update>
 </mapper>
     

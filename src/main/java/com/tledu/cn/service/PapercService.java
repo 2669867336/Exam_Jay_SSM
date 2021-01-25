@@ -12,4 +12,6 @@ public interface PapercService {
     public int papercAdd(Paperc paperc);
     public List<Paperc> papercSelect(Paperc paperc);
     public int papercDelete(Paperc paperc);
+    public String selectTilte(String title);
+    public int papercAdd1(String id);
 }

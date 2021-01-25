@@ -32,7 +32,6 @@ public class PapercServiceImpl implements PapercService {
         }else{
             mark=0;
         }
-
         return mark;
     }
 
@@ -44,10 +43,15 @@ public class PapercServiceImpl implements PapercService {
 
     @Override
     public int papercDelete(Paperc paperc) {
-
+        int i=0;
         int mark;
 
-        int i = papercDao.papercDelete(paperc);
+        String papercId = paperc.getPapercId();
+        String[] ids = papercId.split(",");
+        for (int j=0;j<ids.length;j++){
+            String  id=ids[j].replace(",","");
+            i = papercDao.papercDelete(id);
+        }
         if (i>0){
             mark=1;
         }else{
@@ -55,4 +59,26 @@ public class PapercServiceImpl implements PapercService {
         }
         return mark;
     }
+
+    @Override
+    public String selectTilte(String title) {
+        String id=null;
+        if (title!=""&&title!=null){
+
+             id = papercDao.selectTilte(title);
+        }
+        return id;
+    }
+
+    @Override
+    public int papercAdd1(String id) {
+        int mark=0;
+        int i = papercDao.papercAdd1(id);
+        if (i>0){
+            mark=1;
+        }
+        return mark;
+    }
+
+
 }

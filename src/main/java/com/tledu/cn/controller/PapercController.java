@@ -23,6 +23,7 @@ public class PapercController {
     @RequestMapping("/papercAdd")
     @ResponseBody
     public int papercAdd(@RequestBody Paperc paperc){
+        System.out.println(paperc);
         int mark;
         mark=papercServiceImpl.papercAdd(paperc);
         return mark;

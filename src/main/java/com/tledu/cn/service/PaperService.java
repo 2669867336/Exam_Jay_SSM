@@ -15,6 +15,9 @@ public interface PaperService {
     public List<Paper> paperSelectAll();
     public int paperUpdate(Paper paper);
     public int paperUpdateStatus(Paper paper);
+    public List<Paper> paperSelectPutong();
+    public List<Paper> paperSelectMoni();
+    public List<Paper> paperSelectMohu(String s);
 
 
 

@@ -27,5 +27,17 @@
         update paper set paper_status=#{paperStatus} where paper_name=#{paperName}
     </update>
 
+    <select id="paperSelectPutong" resultType="com.tledu.cn.pojo.Paper">
+        select * from paper where is_delete = "0" and paper_type = "普通试卷"
+    </select>
+
+    <select id="paperSelectMoni" resultType="com.tledu.cn.pojo.Paper">
+        select * from paper where is_delete = "0" and paper_type = "模拟试卷"
+    </select>
+
+    <select id="paperSelectMohu" parameterType="string" resultType="com.tledu.cn.pojo.Paper">
+        select * from paper where paper_name like concat("%",#{value},"%")
+    </select>
+
 </mapper>
     

@@ -113,20 +113,26 @@ public class PaperServiceImpl implements PaperService {
         return mark;
     }
 
+    @Override
+    public List<Paper> paperSelectPutong() {
+        List<Paper> papers = paperDao.paperSelectPutong();
+        return papers;
+    }
 
+    @Override
+    public List<Paper> paperSelectMoni() {
 
+        List<Paper> papers = paperDao.paperSelectMoni();
+        return papers;
+    }
 
+    @Override
+    public List<Paper> paperSelectMohu(String s) {
+      List<Paper> papers=null;
+        if (s!=""&&s!=null){
+            papers = paperDao.paperSelectMohu(s);
+        }
+        return papers;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

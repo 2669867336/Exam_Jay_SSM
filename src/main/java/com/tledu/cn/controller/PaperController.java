@@ -71,4 +71,41 @@ public class PaperController {
         return mark;
     }
 
+    @RequestMapping("/paperSelectPutong")
+    @ResponseBody
+    public pageUtils paperSelectPutong(@RequestBody Map<String,Object> params){
+
+//        核心分页代码
+        PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
+        List<Paper> papers = paperServiceImpl.paperSelectPutong();
+        PageInfo<Paper> pageInfo = new PageInfo<Paper>(papers);
+
+        return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
+
+    @RequestMapping("/paperSelectMoni")
+    @ResponseBody
+    public pageUtils paperSelectMoni(@RequestBody Map<String,Object> params){
+
+//        核心分页代码
+        PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
+        List<Paper> papers = paperServiceImpl.paperSelectMoni();
+        PageInfo<Paper> pageInfo = new PageInfo<Paper>(papers);
+
+        return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
+
+    @RequestMapping("/paperSelectMohu")
+    @ResponseBody
+    public pageUtils paperSelectMohu(@RequestBody Map<String,Object> params){
+
+//        核心分页代码
+        PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
+        List<Paper> papers = paperServiceImpl.paperSelectMohu(params.get("p_title").toString());
+        PageInfo<Paper> pageInfo = new PageInfo<Paper>(papers);
+
+        return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
+
+
 }

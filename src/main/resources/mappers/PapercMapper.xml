@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.PapercDao">
+    <insert id="papercAdd" parameterType="com.tledu.cn.pojo.Paperc">
+        insert into paperc (paperc_id,paperc_title,paperc_a,paperc_b,paperc_c,paperc_d,paperc_type,
+        paperc_rightanswer,is_delete,createtime,paper_id,paperc_score,paperc_degree) values (
+        #{papercId},#{papercTitle},#{papercA},#{papercB},#{papercC},#{papercD},#{papercType},
+        #{papercRightanswer},#{isDelete},#{createtime},#{paperId},#{papercScore},#{papercDegree}
+        )
+    </insert>
+
+    <select id="papercSelect" parameterType="com.tledu.cn.pojo.Paperc" resultType="com.tledu.cn.pojo.Paperc">
+        select * from paperc where is_delete = "0" and paper_id = #{paperId}
+    </select>
+
+    <update id="papercDelete" parameterType="com.tledu.cn.pojo.Paperc">
+        update paperc set is_delete where paperc_title = #{papercTitle}
+    </update>
+</mapper>
+    

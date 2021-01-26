@@ -24,8 +24,9 @@ public class GradecController {
     public PageInfo<Paperc> selectEx(@RequestBody Gradec gradec){
         String paperId = gradec.getPaperId();
         int currentPage = gradec.getCurrentPage();
-        System.out.println(paperId);
+//        System.out.println(paperId+"---"+currentPage);
         PageInfo<Paperc> allByPage = gradecImpl.findAllByPage(currentPage, 1, paperId);
+//        System.out.println(allByPage.getList());
         return allByPage;
     }
 

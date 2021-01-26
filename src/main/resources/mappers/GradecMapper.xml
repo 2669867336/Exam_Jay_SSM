@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.GradecDao">
+<!--    根据paper_id查找试题-->
+    <select id="selectExam" parameterType="string" resultType="com.tledu.cn.pojo.Paperc">
+    select * from paperc where paper_id=#{value} and is_delete="0"
+    </select>
+
+    <insert id="insertExam" parameterType="com.tledu.cn.pojo.Gradec">
+        insert into gradec () values ()
+    </insert>
+</mapper>

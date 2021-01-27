@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.GradeDao">
+
+
+    <insert id="insert1" parameterType="com.tledu.cn.pojo.Grade">
+    insert into grade (grade_id,grade_loginid,grade_name,paper_id)
+    values (#{gradeId},#{gradeLoginid}, #{gradeName},#{paperId})
+    </insert>
+
+    <select id="selectGAll" resultType="com.tledu.cn.pojo.Grade">
+        select * from grade
+    </select>
+
+</mapper>

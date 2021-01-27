@@ -8,7 +8,55 @@
     select * from paperc where paper_id=#{value} and is_delete="0"
     </select>
 
-    <insert id="insertExam" parameterType="com.tledu.cn.pojo.Gradec">
-        insert into gradec () values ()
+<!--    先根据题目id从数据库paperc表查出题目和选项内容还有标准答案等,然后把根据id查出来的这些插入到gradec表里-->
+    <select id="selectPaperAll" parameterType="string" resultType="com.tledu.cn.pojo.Paperc">
+        select * from paperc where paperc_id=#{value} and is_delete="0"
+    </select>
+
+<!--    插入总表-->
+    <insert id="insertPapercAll" parameterType="com.tledu.cn.pojo.Gradec">
+        insert into gradec (gradec_id,gradec_loginid,gradec_name,paper_id,gradec_answer,paperc_id,
+        is_delete,gradec_title,gradec_onescore,gradec_accuracy,gradec_type,gradec_a,gradec_b,
+        gradec_c,gradec_d,gradec_rightanswer,loginc_time,finishc_time,gradec_score) values
+        (#{gradecId},#{gradecLoginid},#{gradecName},#{paperId},#{gradecAnswer},#{papercId},#{isDelete},
+        #{gradecTitle},#{gradecOnescore},#{gradecAccuracy},#{gradecType},#{gradecA},#{gradecB},
+        #{gradecC},#{gradecD},#{gradecRightanswer},#{logincTime},#{finishcTime},#{gradecScore})
     </insert>
+    
+    <select id="selectTil" parameterType="string" resultType="com.tledu.cn.pojo.Gradec">
+        select * from gradec where gradec_title=#{value}
+    </select>
+    <update id="updateGradec" parameterType="string" >
+        update gradec set gradec_answer=#{value}
+    </update>
+
+
+
+    <update id="insertGrade" parameterType="com.tledu.cn.pojo.Gradec" >
+        update grade set
+        grade_score=#{gradecScore},grade_accuracy=#{gradecAccuracy},
+        paper_id=#{paperId},login_time=#{logincTime},finish_time=#{finishcTime},is_delete=#{isDelete}
+        where grade_name=#{gradecName}
+
+    </update>
+
+    <select id="selectAllScore" parameterType="string" resultType="string">
+        select SUM(gradec_score) from gradec GROUP BY #{value}
+    </select>
+
+    <select id="selectMin" parameterType="string" resultType="string">
+        select MIN(loginc_time) from gradec GROUP BY #{value}
+    </select>
+
+    <select id="selectMax" parameterType="string" resultType="string">
+        select MAX(finishc_time) from gradec GROUP BY #{value}
+    </select>
+
+    <select id="selectCount1" parameterType="string" resultType="string">
+        select COUNT(*) from gradec  WHERE gradec_score!=0 AND gradec_name=#{value}
+    </select>
+
+    <select id="selectCount2" parameterType="string" resultType="string">
+        select COUNT(*) from gradec  WHERE gradec_name=#{value}
+    </select>
 </mapper>

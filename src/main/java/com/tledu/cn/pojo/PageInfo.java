@@ -27,7 +27,7 @@ public class PageInfo<T> {
 
         // 计算总页数
         if (totalNum % this.pageSize == 0)
-            this.totalPage = totalNum / this.pageSize;
+            this.totalPage = (totalNum / this.pageSize) ;
         else
             this.totalPage = (totalNum / this.pageSize) + 1;
 

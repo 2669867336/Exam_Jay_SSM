@@ -21,6 +21,16 @@ public class Gradec {
     private String logincTime;
     private String finishcTime;
     private int currentPage;
+    private String papercId;
+    private String totalPage;
+
+    public String getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(String totalPage) {
+        this.totalPage = totalPage;
+    }
 
     public String getGradecId() {
         return gradecId;
@@ -174,6 +184,14 @@ public class Gradec {
         this.currentPage = currentPage;
     }
 
+    public String getPapercId() {
+        return papercId;
+    }
+
+    public void setPapercId(String papercId) {
+        this.papercId = papercId;
+    }
+
     @Override
     public String toString() {
         return "Gradec{" +
@@ -196,10 +214,11 @@ public class Gradec {
                 ", logincTime='" + logincTime + '\'' +
                 ", finishcTime='" + finishcTime + '\'' +
                 ", currentPage=" + currentPage +
+                ", papercId='" + papercId + '\'' +
                 '}';
     }
 
-    public Gradec(String gradecId, String gradecLoginid, String gradecName, String gradecScore, String paperId, String isDelete, String gradecAnswer, String gradecTitle, String gradecOnescore, String gradecAccuracy, String gradecType, String gradecA, String gradecB, String gradecC, String gradecD, String gradecRightanswer, String logincTime, String finishcTime, int currentPage) {
+    public Gradec(String gradecId, String gradecLoginid, String gradecName, String gradecScore, String paperId, String isDelete, String gradecAnswer, String gradecTitle, String gradecOnescore, String gradecAccuracy, String gradecType, String gradecA, String gradecB, String gradecC, String gradecD, String gradecRightanswer, String logincTime, String finishcTime, int currentPage, String papercId) {
         this.gradecId = gradecId;
         this.gradecLoginid = gradecLoginid;
         this.gradecName = gradecName;
@@ -219,6 +238,7 @@ public class Gradec {
         this.logincTime = logincTime;
         this.finishcTime = finishcTime;
         this.currentPage = currentPage;
+        this.papercId = papercId;
     }
 
     public Gradec() {

@@ -18,6 +18,7 @@ public interface PaperService {
     public List<Paper> paperSelectPutong();
     public List<Paper> paperSelectMoni();
     public List<Paper> paperSelectMohu(String s);
+    public void paperDeleteAll(Paper paper);
 
 
 

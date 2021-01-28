@@ -14,4 +14,5 @@ public interface PapercService {
     public int papercDelete(Paperc paperc);
     public String selectTilte(Paperc paperc);
     public int papercAdd1(String id);
+    public void papercAddAll(Paperc paperc);
 }

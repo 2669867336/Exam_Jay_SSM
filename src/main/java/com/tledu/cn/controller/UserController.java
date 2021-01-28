@@ -1,5 +1,8 @@
 package com.tledu.cn.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.tledu.cn.pojo.Examination;
 import com.tledu.cn.pojo.User;
 import com.tledu.cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import util.JDK8DateUtil;
+import util.pageUtils;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -37,5 +43,39 @@ public class UserController {
         return mark;
 
     }
+    @RequestMapping("/startStatus")
+    @ResponseBody
+    public void startStatus(@RequestBody User user){
 
+       userServiceImpl.startStatus(user);
+
+
+    }
+    @RequestMapping("/stopStatus")
+    @ResponseBody
+    public void stopStatus(@RequestBody User user){
+
+        userServiceImpl.stopStatus(user);
+
+
+    }
+    @RequestMapping("/userDelete")
+    @ResponseBody
+    public void userDelete(@RequestBody User user){
+
+        userServiceImpl.userDelete(user);
+
+
+    }
+    @RequestMapping("/userSelectAll")
+    @ResponseBody
+    public pageUtils validateProjectCodeX(@RequestBody Map<String,Object> params){
+
+//        核心分页代码
+        PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
+        List<User> exs = userServiceImpl.userSelectAll();
+        PageInfo<User> pageInfo = new PageInfo<User>(exs);
+
+        return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
 }

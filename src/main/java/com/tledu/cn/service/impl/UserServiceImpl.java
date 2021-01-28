@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.JDK8DateUtil;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
                 user.setUserId(UUID.randomUUID().toString());
                 user.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
                 user.setIsDelete("0");
+                user.setUserStatus("开启");
 //                System.out.println(user);
                 userDao.register(user);
                 mark=1;
@@ -59,6 +61,26 @@ public class UserServiceImpl implements UserService {
         return mark;
     }
 
+    @Override
+    public void startStatus(User user) {
+        userDao.startStatus(user);
+    }
+
+    @Override
+    public void stopStatus(User user) {
+        userDao.stopStatus(user);
+    }
+
+    @Override
+    public void userDelete(User user) {
+        userDao.userDelete(user);
+    }
+
+    @Override
+    public List<User> userSelectAll() {
+        List<User> users = userDao.userSelectAll();
+        return users;
+    }
 
 
 }

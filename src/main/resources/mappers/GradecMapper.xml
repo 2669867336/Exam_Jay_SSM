@@ -28,10 +28,9 @@
          and gradec_title=#{gradecTitle}
     </select>
     <update id="updateGradec" parameterType="com.tledu.cn.pojo.Gradec" >
-        update gradec set gradec_answer=#{value} where paper_id=#{paperId}
-         and gradec_name=#{gradecName} and gradec_title=#{gradecTitle}
-    </update>
-
+    update gradec set gradec_answer=#{gradecAnswer} where paper_id=#{paperId}
+    and gradec_name=#{gradecName} and gradec_title=#{gradecTitle}
+</update>
 
 
     <update id="insertGrade" parameterType="com.tledu.cn.pojo.Gradec" >
@@ -42,23 +41,23 @@
 
     </update>
 
-    <select id="selectAllScore" parameterType="string" resultType="string">
-        select SUM(gradec_score) from gradec GROUP BY #{value}
+    <select id="selectAllScore" parameterType="com.tledu.cn.pojo.Gradec" resultType="string">
+        select SUM(gradec_score) from gradec where paper_id=#{paperId} GROUP BY #{gradecName}
     </select>
 
-    <select id="selectMin" parameterType="string" resultType="string">
-        select MIN(loginc_time) from gradec GROUP BY #{value}
+    <select id="selectMin" parameterType="com.tledu.cn.pojo.Gradec" resultType="string">
+        select MIN(loginc_time) from gradec where paper_id=#{paperId} GROUP BY #{gradecName}
     </select>
 
-    <select id="selectMax" parameterType="string" resultType="string">
-        select MAX(finishc_time) from gradec GROUP BY #{value}
+    <select id="selectMax" parameterType="com.tledu.cn.pojo.Gradec" resultType="string">
+        select MAX(finishc_time) from gradec where paper_id=#{paperId} GROUP BY #{gradecName}
     </select>
 
-    <select id="selectCount1" parameterType="string" resultType="string">
-        select COUNT(*) from gradec  WHERE gradec_score!=0 AND gradec_name=#{value}
+    <select id="selectCount1" parameterType="com.tledu.cn.pojo.Gradec" resultType="string">
+        select COUNT(*) from gradec  WHERE gradec_score!=0 AND gradec_name=#{gradecName} and paper_id=#{paperId}
     </select>
 
-    <select id="selectCount2" parameterType="string" resultType="string">
-        select COUNT(*) from gradec  WHERE gradec_name=#{value}
+    <select id="selectCount2" parameterType="com.tledu.cn.pojo.Gradec" resultType="string">
+        select COUNT(*) from gradec  WHERE gradec_name=#{gradecName} and paper_id=#{paperId}
     </select>
 </mapper>

@@ -5,7 +5,7 @@
 <mapper namespace="com.tledu.cn.dao.UserDao">
 
     <insert id="register" parameterType="com.tledu.cn.pojo.User">
-        insert into user (user_id,user_name,user_acc,user_pwd,createtime,is_delete) values (#{userId},#{userName},#{userAcc},#{userPwd},#{createtime},#{isDelete})
+        insert into user (user_id,user_name,user_acc,user_pwd,createtime,is_delete,user_status) values (#{userId},#{userName},#{userAcc},#{userPwd},#{createtime},#{isDelete},#{userStatus})
     </insert>
 
     <select id="isExist" parameterType="com.tledu.cn.pojo.User" resultType="java.lang.String">
@@ -13,7 +13,20 @@
     </select>
 
     <select id="login" parameterType="com.tledu.cn.pojo.User" resultType="java.lang.String">
-        select user_pwd from user where user_acc=#{userAcc}
+        select user_pwd from user where user_acc=#{userAcc} and user_status="开启" and is_delete="0"
+    </select>
+
+    <update id="startStatus" parameterType="com.tledu.cn.pojo.User">
+        update user set user_status="开启" where user_acc=#{userAcc}
+    </update>
+    <update id="stopStatus" parameterType="com.tledu.cn.pojo.User">
+        update user set user_status="关闭" where user_acc=#{userAcc}
+    </update>
+    <update id="userDelete" parameterType="com.tledu.cn.pojo.User">
+        update user set is_delete = "1" where user_acc = #{userAcc}
+    </update>
+    <select id="userSelectAll" resultType="com.tledu.cn.pojo.User">
+        select * from user where is_delete="0"
     </select>
 </mapper>
     

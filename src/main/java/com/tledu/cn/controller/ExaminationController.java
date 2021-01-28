@@ -91,7 +91,19 @@ public class ExaminationController {
 
         return exs;
     }
+    @RequestMapping("/examinationDeleteAll")
+    @ResponseBody
+    public int examinationDeleteAll(@RequestBody Examination examination){
+        int mark;
+        if (examination.getExaminationTitle()!=""&&examination.getExaminationTitle()!=null){
 
+            examinationImpl.deleteAll(examination);
+            mark=1;
+        }else{
+            mark=0;
+        }
+        return mark;
+    }
 
 
     //选择分页

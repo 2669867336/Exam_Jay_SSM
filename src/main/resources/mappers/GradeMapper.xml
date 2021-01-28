@@ -14,4 +14,8 @@
         select * from grade where paper_id=#{value}
     </select>
 
+    <select id="selectGradeId" parameterType="com.tledu.cn.pojo.Grade" resultType="string">
+        select grade_id from grade where paper_id=#{paperId} and grade_name=#{gradeName}
+    </select>
+
 </mapper>

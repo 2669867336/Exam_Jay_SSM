@@ -1,5 +1,7 @@
 package com.tledu.cn.pojo;
 
+import javax.swing.*;
+
 /**
  * @author sxwstart
  * @create 2021-01-20-10:34:46
@@ -12,6 +14,15 @@ public class User {
     private String userPwd;
     private String createtime;
     private String isDelete;
+    private String userStatus;
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
 
     @Override
     public String toString() {

@@ -14,4 +14,5 @@ public interface ExaminationService {
     public List<Examination> selectTypeXuan();
     public List<Examination> selectTypeJian();
     public List<Examination> selectKeyword(String e_title);
+    public void deleteAll(Examination examination);
 }

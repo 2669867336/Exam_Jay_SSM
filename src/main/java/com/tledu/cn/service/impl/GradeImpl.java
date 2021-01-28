@@ -21,13 +21,21 @@ public class GradeImpl implements GradeService {
 
     @Override
     public int insert1(Grade grade) {
-        grade.setGradeId(UUID.randomUUID().toString());
-        int i = gradeDao.insert1(grade);
-        if (i>0){
-            return 0;
+        String id = gradeDao.selectGradeId(grade);
+        if (id!=""&&id!=null){
+
+            return 2;
+
         }else{
-            return 1;
+            grade.setGradeId(UUID.randomUUID().toString());
+            int i = gradeDao.insert1(grade);
+            if (i>0){
+                return 1;
+            }else{
+                return 0;
+            }
         }
+
     }
 
     @Override

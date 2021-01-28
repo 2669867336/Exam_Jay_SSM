@@ -35,6 +35,7 @@ public class GradecImpl implements GradecService {
     @Override
     public Paperc selectPaperAll(Gradec gradec,int a) {
         String papercId = gradec.getPapercId();
+
         Paperc paperc1 = gradecDao.selectPaperAll(papercId);
         paperc1.getPapercTitle();
         paperc1.getPapercA();
@@ -59,25 +60,40 @@ public class GradecImpl implements GradecService {
         gradec.setGradecOnescore(paperc1.getPapercScore());
         gradec.setLogincTime(JDK8DateUtil.LocalDateTime2String(null,null));
         gradec.setIsDelete("0");
-        System.out.println(gradec.getGradecAnswer());
-        System.out.println(paperc1.getPapercRightanswer());
-        if (gradec.getGradecAnswer().equals(paperc1.getPapercRightanswer())){
-            System.out.println("*********");
-            i++;
-            System.out.println(i);
-            score+= Integer.parseInt(paperc1.getPapercScore());
-            System.out.println(score);
-        }
-        gradec.setGradecScore(String.valueOf(score));
-        System.out.println(a);
-        float acc=(float) i/ (float) a;
-        System.out.println(acc+"kkk");
-        gradec.setGradecAccuracy(String.valueOf(acc));
+//        System.out.println(gradec.getGradecAnswer());
+//        System.out.println(paperc1.getPapercRightanswer());
+
 
         Gradec gradec1 = gradecDao.selectTil(gradec);
         if (gradec1==null){
+            if (gradec.getGradecAnswer().equals(paperc1.getPapercRightanswer())){
+//                System.out.println("*********");
+                i++;
+//                System.out.println(i);
+                score+= Integer.parseInt(paperc1.getPapercScore());
+//                System.out.println(score);
+            }
+            gradec.setGradecScore(String.valueOf(score));
+//            System.out.println(a);
+            float acc=(float) i/ (float) a;
+//            System.out.println(acc+"kkk");
+            gradec.setGradecAccuracy(String.valueOf(acc));
             gradecDao.insertPapercAll(gradec);
         }else{
+            gradecDao.updateGradec(gradec);
+
+            if (gradec.getGradecAnswer().equals(paperc1.getPapercRightanswer())){
+//                System.out.println("*********");
+                i++;
+//                System.out.println(i);
+                score+= Integer.parseInt(paperc1.getPapercScore());
+//                System.out.println(score);
+            }
+            gradec.setGradecScore(String.valueOf(score));
+//            System.out.println(a);
+            float acc=(float) i/ (float) a;
+//            System.out.println(acc+"kkk");
+            gradec.setGradecAccuracy(String.valueOf(acc));
             gradecDao.updateGradec(gradec);
         }
 
@@ -87,20 +103,20 @@ public class GradecImpl implements GradecService {
     @Override
     public Gradec insertPapercAll(Gradec gradec) {
 
-        String score = gradecDao.selectAllScore(gradec.getGradecName());
+        String score = gradecDao.selectAllScore(gradec);
 //        System.out.println(score);
         gradec.setGradecScore(score);
 
-        String selectMin = gradecDao.selectMin(gradec.getGradecName());
+        String selectMin = gradecDao.selectMin(gradec);
 //        System.out.println(selectMin);
         gradec.setLogincTime(selectMin);
 
-        String selectMax = gradecDao.selectMax(gradec.getGradecName());
+        String selectMax = gradecDao.selectMax(gradec);
 //        System.out.println(selectMax);
         gradec.setFinishcTime(selectMax);
 
-        String a = gradecDao.selectCount1(gradec.getGradecName());
-        String b = gradecDao.selectCount2(gradec.getGradecName());
+        String a = gradecDao.selectCount1(gradec);
+        String b = gradecDao.selectCount2(gradec);
 
         Float cFloat=Float.parseFloat(a)/Float.parseFloat(b);
         gradec.setGradecAccuracy(cFloat.toString());

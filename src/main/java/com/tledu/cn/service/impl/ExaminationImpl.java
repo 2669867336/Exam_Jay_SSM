@@ -108,4 +108,15 @@ public class ExaminationImpl implements ExaminationService {
         List<Examination> examinations = examinationDao.selectKeyword(e_title);
         return examinations;
     }
+
+    @Override
+    public void deleteAll(Examination examination) {
+        String[] titles=examination.getExaminationTitle().split(",");
+        for (int i=0;i<titles.length;i++){
+            String title=titles[i].replace(",","");
+            examination.setExaminationTitle(title);
+            examinationDao.deleteExamination(examination);
+        }
+
+    }
 }

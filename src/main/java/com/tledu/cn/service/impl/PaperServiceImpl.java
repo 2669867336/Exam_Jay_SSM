@@ -135,4 +135,14 @@ public class PaperServiceImpl implements PaperService {
         return papers;
 
     }
+
+    @Override
+    public void paperDeleteAll(Paper paper) {
+        String[] names = paper.getPaperName().split(",");
+        for (int i=0;i<names.length;i++){
+            String name=names[i].replace(",","");
+            paper.setPaperName(name);
+            paperDao.paperDelete(paper);
+        }
+    }
 }

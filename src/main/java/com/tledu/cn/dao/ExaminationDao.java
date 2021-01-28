@@ -1,9 +1,10 @@
 package com.tledu.cn.dao;
 
 import com.tledu.cn.pojo.Examination;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-
+@Mapper
 public interface ExaminationDao {
     public int insertExamination(Examination examination);
     public List<Examination> selectExamination();

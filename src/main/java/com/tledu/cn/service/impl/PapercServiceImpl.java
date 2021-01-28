@@ -80,5 +80,19 @@ public class PapercServiceImpl implements PapercService {
         return mark;
     }
 
+    @Override
+    public void papercAddAll(Paperc paperc) {
+        String[] titles = paperc.getPapercTitle().split(",");
+        for (int i=0;i<titles.length;i++){
+            String title=titles[i].replace(",","");
+            paperc.setPapercTitle(title);
+            String id = papercDao.selectTilte(paperc);
+            if (id!=""&&id!=null){
+                papercDao.papercAdd1(id);
+            }else{
+                papercDao.papercAdd(paperc);
+            }
+        }
 
+    }
 }

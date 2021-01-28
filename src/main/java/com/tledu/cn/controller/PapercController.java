@@ -1,7 +1,10 @@
 package com.tledu.cn.controller;
 
+import com.tledu.cn.dao.PapercDao;
+import com.tledu.cn.pojo.Paper;
 import com.tledu.cn.pojo.Paperc;
 import com.tledu.cn.service.PapercService;
+import com.tledu.cn.service.impl.PapercServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +26,7 @@ public class PapercController {
     @RequestMapping("/papercAdd")
     @ResponseBody
     public int papercAdd(@RequestBody Paperc paperc){
-        System.out.println(paperc);
+//        System.out.println(paperc);
         int mark;
         String id = papercServiceImpl.selectTilte(paperc);
         if (id!=""&&id!=null){
@@ -45,7 +48,7 @@ public class PapercController {
     public List<Paperc> papercSelect(@RequestBody Paperc paperc){
 
         List<Paperc> papercs = papercServiceImpl.papercSelect(paperc);
-        System.out.println(papercs);
+//        System.out.println(papercs);
         return papercs;
     }
 
@@ -57,4 +60,16 @@ public class PapercController {
         return mark;
     }
 
+    @RequestMapping("/papercAddAll")
+    @ResponseBody
+    public int papercAddAll(@RequestBody Paperc paperc){
+        int mark;
+        if (paperc.getPapercTitle()!=""&&paperc.getPapercTitle()!=null){
+            papercServiceImpl.papercAddAll(paperc);
+            mark=1;
+        }else{
+            mark=0;
+        }
+        return mark;
+    }
 }

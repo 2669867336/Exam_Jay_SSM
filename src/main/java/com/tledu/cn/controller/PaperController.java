@@ -2,6 +2,7 @@ package com.tledu.cn.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.tledu.cn.dao.PaperDao;
 import com.tledu.cn.pojo.Examination;
 import com.tledu.cn.pojo.Paper;
 import com.tledu.cn.service.PaperService;
@@ -107,5 +108,16 @@ public class PaperController {
         return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }
 
-
+    @RequestMapping("/paperDeleteAll")
+    @ResponseBody
+    public int paperDeleteAll(@RequestBody Paper paper){
+        int mark;
+        if (paper.getPaperName()!=""&&paper.getPaperName()!=null){
+            paperServiceImpl.paperDeleteAll(paper);
+            mark=1;
+        }else{
+            mark=0;
+        }
+        return mark;
+    }
 }

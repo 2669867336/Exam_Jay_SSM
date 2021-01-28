@@ -45,27 +45,27 @@ public class UserController {
     }
     @RequestMapping("/startStatus")
     @ResponseBody
-    public void startStatus(@RequestBody User user){
+    public int startStatus(@RequestBody User user){
 
        userServiceImpl.startStatus(user);
-
+        return 1;
 
     }
     @RequestMapping("/stopStatus")
     @ResponseBody
-    public void stopStatus(@RequestBody User user){
+    public int stopStatus(@RequestBody User user){
 
         userServiceImpl.stopStatus(user);
-
+        return 1;
 
     }
     @RequestMapping("/userDelete")
     @ResponseBody
-    public void userDelete(@RequestBody User user){
+    public int userDelete(@RequestBody User user){
 
         userServiceImpl.userDelete(user);
 
-
+        return 1;
     }
     @RequestMapping("/userSelectAll")
     @ResponseBody

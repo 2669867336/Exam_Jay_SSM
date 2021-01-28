@@ -19,8 +19,8 @@
         update paperc set is_delete = "1" where paperc_id = #{value}
     </update>
 
-    <select id="selectTilte" parameterType="string" resultType="string">
-        select paperc_id from paperc where paperc_title=#{value}
+    <select id="selectTilte" parameterType="com.tledu.cn.pojo.Paperc" resultType="string">
+        select paperc_id from paperc where paperc_title=#{papercTitle} and paper_id=#{paperId}
     </select>
 
     <update id="papercAdd1" parameterType="string">

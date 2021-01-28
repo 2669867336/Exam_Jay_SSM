@@ -14,7 +14,7 @@ public interface PapercDao {
     public int papercAdd(Paperc paperc);
     public List<Paperc> papercSelect(Paperc paperc);
     public int papercDelete(String id);
-    public String selectTilte(String title);
+    public String selectTilte(Paperc paperc);
     public int papercAdd1(String id);
 
 }

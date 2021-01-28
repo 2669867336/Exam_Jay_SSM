@@ -22,16 +22,6 @@ public class GradecController {
     @Autowired
     private GradecService gradecImpl;
 
-//    @RequestMapping("/selectExam2")
-//    @ResponseBody
-//    public PageInfo<Paperc> selectEx(@RequestBody Gradec gradec){
-//        String paperId = gradec.getPaperId();
-//        int currentPage = gradec.getCurrentPage();
-////        System.out.println(paperId+"---"+currentPage);
-//        PageInfo<Paperc> allByPage = gradecImpl.findAllByPage(currentPage, 1, paperId);
-////        System.out.println(allByPage.getList());
-//        return allByPage;
-//    }
 
 
     @RequestMapping("/selectExam1")
@@ -55,22 +45,11 @@ public class GradecController {
 
 
         Gradec gradec1 = gradecImpl.insertPapercAll(gradec);
-        System.out.println(currentPage+"---"+gradec1);
-//        String finishcTime = gradec1.getFinishcTime();
-//        String gradecAccuracy = gradec1.getGradecAccuracy();
-//        String logincTime = gradec1.getLogincTime();
+//        System.out.println(currentPage+"---"+gradec1);
 
 
         return allByPage;
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -61,11 +61,11 @@ public class PapercServiceImpl implements PapercService {
     }
 
     @Override
-    public String selectTilte(String title) {
+    public String selectTilte(Paperc paperc) {
         String id=null;
-        if (title!=""&&title!=null){
+        if (paperc.getPapercTitle()!=""&&paperc.getPapercTitle()!=null){
 
-             id = papercDao.selectTilte(title);
+             id = papercDao.selectTilte(paperc);
         }
         return id;
     }

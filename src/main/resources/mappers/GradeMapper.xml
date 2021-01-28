@@ -10,8 +10,8 @@
     values (#{gradeId},#{gradeLoginid}, #{gradeName},#{paperId})
     </insert>
 
-    <select id="selectGAll" resultType="com.tledu.cn.pojo.Grade">
-        select * from grade
+    <select id="selectGAll" parameterType="string" resultType="com.tledu.cn.pojo.Grade">
+        select * from grade where paper_id=#{value}
     </select>
 
 </mapper>

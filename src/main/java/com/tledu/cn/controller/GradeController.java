@@ -35,8 +35,9 @@ public class GradeController {
     @RequestMapping("/selectGradeAll")
     @ResponseBody
     public pageUtils validateProjectCodeKeyword(@RequestBody Map<String,Object> params){
+        List<Grade> exs = gradeImpl.selectGAll(params.get("paperId").toString());
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()), Integer.parseInt(params.get("pageNumber").toString()));
-        List<Grade> exs = gradeImpl.selectGAll();
+
         PageInfo<Grade> pageInfo = new PageInfo<Grade>(exs);
 
         return new pageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());

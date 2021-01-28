@@ -31,8 +31,8 @@ public class GradeImpl implements GradeService {
     }
 
     @Override
-    public List<Grade> selectGAll() {
-        List<Grade> grades = gradeDao.selectGAll();
+    public List<Grade> selectGAll(String str) {
+        List<Grade> grades = gradeDao.selectGAll(str);
         return grades;
     }
 }

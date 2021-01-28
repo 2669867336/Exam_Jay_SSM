@@ -18,6 +18,6 @@ public interface GradecService {
     public String selectMax(String str);
     public String selectCount1(String str);
     public String selectCount2(String str);
-    public Gradec selectTil(String str);
-    public void updateGradec(String str);
+    public Gradec selectTil(Gradec gradec);
+    public void updateGradec(Gradec gradec);
 }

@@ -23,11 +23,13 @@
         #{gradecC},#{gradecD},#{gradecRightanswer},#{logincTime},#{finishcTime},#{gradecScore})
     </insert>
     
-    <select id="selectTil" parameterType="string" resultType="com.tledu.cn.pojo.Gradec">
-        select * from gradec where gradec_title=#{value}
+    <select id="selectTil" parameterType="com.tledu.cn.pojo.Gradec" resultType="com.tledu.cn.pojo.Gradec">
+        select * from gradec where paper_id=#{paperId} and gradec_name=#{gradecName}
+         and gradec_title=#{gradecTitle}
     </select>
-    <update id="updateGradec" parameterType="string" >
-        update gradec set gradec_answer=#{value}
+    <update id="updateGradec" parameterType="com.tledu.cn.pojo.Gradec" >
+        update gradec set gradec_answer=#{value} where paper_id=#{paperId}
+         and gradec_name=#{gradecName} and gradec_title=#{gradecTitle}
     </update>
 
 

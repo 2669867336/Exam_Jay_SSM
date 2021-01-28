@@ -7,5 +7,5 @@ import java.util.List;
 public interface GradeDao {
 
     public int insert1(Grade grade);
-    public List<Grade> selectGAll();
+    public List<Grade> selectGAll(String str);
 }

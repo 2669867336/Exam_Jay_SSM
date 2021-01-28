@@ -74,11 +74,11 @@ public class GradecImpl implements GradecService {
         System.out.println(acc+"kkk");
         gradec.setGradecAccuracy(String.valueOf(acc));
 
-        Gradec gradec1 = gradecDao.selectTil(paperc1.getPapercTitle());
+        Gradec gradec1 = gradecDao.selectTil(gradec);
         if (gradec1==null){
             gradecDao.insertPapercAll(gradec);
         }else{
-            gradecDao.updateGradec(gradec.getGradecAnswer());
+            gradecDao.updateGradec(gradec);
         }
 
         return paperc1;
@@ -142,14 +142,14 @@ public class GradecImpl implements GradecService {
         return null;
     }
 
-    @Override
-    public Gradec selectTil(String str) {
 
+    @Override
+    public Gradec selectTil(Gradec gradec) {
         return null;
     }
 
     @Override
-    public void updateGradec(String str) {
+    public void updateGradec(Gradec gradec) {
 
     }
 }

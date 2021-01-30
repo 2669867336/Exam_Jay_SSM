@@ -5,7 +5,7 @@ import com.tledu.cn.pojo.Paperc;
 import com.tledu.cn.service.PapercService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import util.JDK8DateUtil;
+import com.tledu.cn.util.JDK8DateUtil;
 
 import java.util.List;
 import java.util.UUID;
@@ -90,6 +90,9 @@ public class PapercServiceImpl implements PapercService {
             if (id!=""&&id!=null){
                 papercDao.papercAdd1(id);
             }else{
+                paperc.setPapercId(UUID.randomUUID().toString());
+                paperc.setCreatetime(JDK8DateUtil.LocalDateTime2String(null,null));
+                paperc.setIsDelete("0");
                 papercDao.papercAdd(paperc);
             }
         }

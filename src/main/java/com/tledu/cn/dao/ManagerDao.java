@@ -1,6 +1,9 @@
 package com.tledu.cn.dao;
 
+import com.tledu.cn.pojo.Manager;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author sxwstart
@@ -8,5 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ManagerDao {
-    public String managerLogin(String acc);
+    public List<Manager> managerLogin(String acc);
 }

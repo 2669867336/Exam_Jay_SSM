@@ -6,6 +6,8 @@ import com.tledu.cn.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author sxwstart
  * @create 2021-01-28-15:51:09
@@ -18,11 +20,18 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public int managerLogin(Manager manager) {
-        String pwd = managerDao.managerLogin(manager.getManagerAcc());
-        if (manager.getManagerPwd().equals(pwd)){
-            return 1;
-        }else{
-            return 0;
+        int mark=0;
+        List<Manager> pwds = managerDao.managerLogin(manager.getManagerAcc());
+        for (int i=0;i<pwds.size();i++){
+            if (manager.getManagerPwd().equals(pwds.get(i))){
+//                System.out.println(manager.getManagerPwd()+"---"+pwds.get(i));
+                mark=1;
+                break;
+            }else{
+                mark= 0;
+            }
         }
+
+        return 0;
     }
 }

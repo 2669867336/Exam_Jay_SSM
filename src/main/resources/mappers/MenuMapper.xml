@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tledu.cn.dao.MenuDao">
+    <insert id="menuAdd" parameterType="com.tledu.cn.pojo.Menu">
+        insert into menu (menu_id,menu_name,menu_href,createtime,is_delete) values (#{menuId},#{menuName},#{menuHref},#{createtime},#{isDelete} )
+    </insert>
+    <select id="menuSelectAll" resultType="com.tledu.cn.pojo.Menu">
+        select * from menu where is_delete = "0"
+    </select>
+    <update id="menuUpdate" parameterType="com.tledu.cn.pojo.Menu">
+        update menu set menu_name=#{menuName},menu_href=#{menuHref} where menu_id=#{menuId}
+    </update>
+    <update id="menuDelete" parameterType="com.tledu.cn.pojo.Menu">
+        update menu set is_delete="1" where menu_id=#{menuId}
+    </update>
+    <select id="selectTitle" parameterType="com.tledu.cn.pojo.Menu" resultType="com.tledu.cn.pojo.Menu">
+        select * from menu where menu_name=#{menuName}
+    </select>
+    <update id="menuAddPlus" parameterType="com.tledu.cn.pojo.Menu">
+        update menu set menu_name=#{menuName},menu_href=#{menuHref},is_delete="0" where menu_id=#{menuId}
+    </update>
+
+</mapper>
+    

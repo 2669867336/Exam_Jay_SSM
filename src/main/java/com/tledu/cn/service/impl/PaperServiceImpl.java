@@ -5,7 +5,7 @@ import com.tledu.cn.pojo.Paper;
 import com.tledu.cn.service.PaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import util.JDK8DateUtil;
+import com.tledu.cn.util.JDK8DateUtil;
 
 import java.util.List;
 import java.util.UUID;

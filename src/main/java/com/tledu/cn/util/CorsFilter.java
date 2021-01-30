@@ -1,4 +1,4 @@
-package util;
+package com.tledu.cn.util;
 
 import org.springframework.stereotype.Component;
 

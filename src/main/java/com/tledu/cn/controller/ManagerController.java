@@ -20,9 +20,10 @@ public class ManagerController {
     @RequestMapping("/managerLogin")
     @ResponseBody
     public int managerLogin(@RequestBody Manager manager){
-        if (manager.getManagerAcc()!=""&&manager.getManagerAcc()!=null){
-            return managerServiceImpl.managerLogin(manager);
-
+        if (manager.getManagerAcc()!=""&&manager.getManagerAcc()!=null&&
+            manager.getManagerPwd()!=""&&manager.getManagerPwd()!=null){
+             managerServiceImpl.managerLogin(manager);
+            return 1;
         }else{
 
             return 0;

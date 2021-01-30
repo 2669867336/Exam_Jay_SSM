@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tledu.cn.dao.ManagerDao">
-    <select id="managerLogin" parameterType="string" resultType="string">
+    <select id="managerLogin" parameterType="string" resultType="com.tledu.cn.pojo.Manager">
         select manager_pwd from manager where manager_acc=#{value}
     </select>
 </mapper>
